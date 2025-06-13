@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>European CV Template</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+            padding: 20px;
+        }
+
+        .cv-container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+        }
+
+        .profile-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .name {
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title {
+            font-size: 1.3em;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.95em;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            padding: 40px 30px;
+            border-right: 1px solid #e9ecef;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #667eea;
+            position: relative;
+        }
+
+        .sidebar .section-title {
+            font-size: 1.2em;
+            color: #495057;
+            border-bottom: 2px solid #495057;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+       .company-logo img {
+            width: 20%;  
+            height: 20%;
+            object-fit: cover;
+        } 
+        
+       .education-logo img {
+            width: 20%;  
+            height: 20%;
+            object-fit: cover;
+        } 
+        .experience-item::before, .education-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .job-title, .degree {
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .company, .institution {
+            color: #667eea;
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .date {
+            background: #e9ecef;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            color: #495057;
+            white-space: nowrap;
+        }
+
+        .description {
+            margin-top: 10px;
+            color: #555;
+            line-height: 1.75;
+            text-align: justify;
+            hyphens: auto;
+            font-size: 0.85em;
+            font-family: "Times New Roman";
+            font-weight: 600;
+        }
+        .description a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .description a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .skills-desc {
+            margin-top: 10px;
+            color: #555;
+            line-height: 1.5;
+            text-align: justify;
+            hyphens: auto;
+            font-size: 0.75em;
+            font-family: "Times New Roman";
+            font-weight: 400;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+
+        .skill-category h4 {
+            color: #495057;
+            margin-bottom: 12px;
+            font-size: 1em;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #667eea;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+        }
+
+        .languages {
+            list-style: none;
+        }
+
+        .languages li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .languages li:last-child {
+            border-bottom: none;
+        }
+
+        .language-level {
+            background: #28a745;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8em;
+        }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .interest-tag {
+            background: #495057;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .cv-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .download-btn {
+            display: none !important;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .item-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .download-btn {
+                top: 10px;
+                right: 10px;
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+        }
+
+        /* pop up */
+        /* Modal styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 1;
+            visibility: visible;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .modal {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            transform: scale(1);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.hidden .modal {
+            transform: scale(0.8);
+        }
+
+        .modal h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        .modal p {
+            margin-bottom: 30px;
+            color: #555;
+            font-size: 1.1em;
+        }
+
+        .source-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .source-btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .source-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-search {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-linkedin {
+            background: linear-gradient(135deg, #0077b5 0%, #005885 100%);
+            color: white;
+        }
+
+        .btn-friends {
+            background: linear-gradient(135deg, #28a745 0%, #20863a 100%);
+            color: white;
+        }
+
+        .skip-btn {
+            margin-top: 20px;
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 0.9em;
+        }
+
+        .thank-you {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #28a745;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .thank-you.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* PDF Download Button */
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <body>
+    <!-- PDF Download Button -->
+    <button class="download-btn" onclick="downloadPDF()">
+        📄 Download PDF
+    </button>
+    <!-- Modal pop up -->
+    <div class="modal-overlay" id="sourceModal">
+        <div class="modal">
+            <h2>Welcome! 👋</h2>
+            <p>I'm curious - how did you find my CV?</p>
+            <div class="source-buttons">
+                <button class="source-btn btn-search" onclick="selectSource('search')">
+                    🔍 General Search (Google, etc.)
+                </button>
+                <button class="source-btn btn-linkedin" onclick="selectSource('linkedin')">
+                    💼 LinkedIn
+                </button>
+                <button class="source-btn btn-friends" onclick="selectSource('friends')">
+                    👥 Friends/Network
+                </button>
+                <button class="source-btn btn-others" onclick="selectSource('others')">
+                    📝 Others
+                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thank you message -->
+    <div class="thank-you" id="thankYou">
+        Thanks for letting me know! 🙏
+    </div>
+
+    <div class="cv-container">
+        <!-- Your existing CV content stays here -->
+    <div class="cv-container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="profile-photo">
+                <img src="./profile-photo.jpg" alt="Profile Photo" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color: #666; font-size: 12px;\'>Photo not found</span>';">
+            </div>
+            <h1 class="name">Emad Shamsaki</h1>
+            <h2 class="title">Embedded Software Engineer</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>shamsaki.emad@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Padova, Italy</span>
+                </div>
+                <div class="contact-item">
+                    <span>💼</span>
+                    <a href="https://www.linkedin.com/in/emad-shamsaki/" target="_blank" style="color: white; text-decoration: none;">LinkedIn</a>
+                </div>
+                <div class="contact-item">
+                <span>🌐</span>
+                    <a href="https://emad-shamsaki.github.io/public-cv/" target="_blank" style="color: white; text-decoration: none;">CLICK TO SEE THE MOST RECENT CV</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Skills Section -->
+                <div class="section">
+                    <h3 class="section-title">Skills</h3>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Technical Skills</h4>
+                            <div class="skill-list">
+                                <span class="skill-tag">C++</span>
+                                <span class="skill-tag">C</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Matlab</span>
+                                <span class="skill-tag">Simulink</span>
+                                <span class="skill-tag">Stateflow</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Soft Skills</h4>
+                            <div class="skill-list">
+                                <span class="skill-tag">Willingness to Learn</span>
+                                <span class="skill-tag">Fast Learner</span>
+                                <span class="skill-tag">Problem Solving</span>
+                                <span class="skill-tag">Analytical Thinking</span>
+                                <span class="skill-tag">Team Collaboration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Languages Section -->
+                <div class="section">
+                    <h3 class="section-title">Languages</h3>
+                    <ul class="languages">
+                        <li>
+                            <span>English</span>
+                            <span class="language-level">C1</span>
+                        </li>
+                        <li>
+                            <span>Italian</span>
+                            <span class="language-level">B1</span>
+                        </li>
+                        <li>
+                            <span>Farsi</span>
+                            <span class="language-level">Native</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Interests Section -->
+                <div class="section">
+                    <h3 class="section-title">Interests</h3>
+                    <div class="interests">
+                        <span class="interest-tag">Travel</span>
+                        <span class="interest-tag">Photography</span>
+                        <span class="interest-tag">Sport</span>
+                        <span class="interest-tag">AI Algorithmic Trading</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="content">
+                <!-- Professional Summary -->
+                <div class="section">
+                    <h3 class="section-title">Professional Summary</h3>
+                    <p class="description">
+                       I studied for a master's degree in Control System Engineering at the University of Padua (Italy).
+
+                        Working as an Embedded Software Engineer at Inel elettronica s.r.l (Italy).</br>
+
+                        Experienced in Real Time Operation Systems (RTOS) for industrialization, embedded linux, embedded AI and ARM programming.</br>
+
+                        In addition I am experienced with the Robot Operating System (ROS) in automative industries, Model in the Loop (MIL), Software in the Loop (SIL) simulation, and Processor in the Loop (PIL).</br>
+
+                        About the communication protocols I have experience with Ethercat (DS401), CANopen (DS301), Modbus, UART, SPI, I2C, and ethernet.</br>
+
+                        The programming languages I have worked includes C, C++, Python, Simulink, and Matlab. </br>
+
+                        I know about the functional safety standard (ISO 26262).
+
+                        Also I have the knowledge of workflow including V-cycle software development, Agile methodology, and Git.
+                    </p>
+                </div>
+
+                <!-- Work Experience -->
+                <div class="section">
+                    <h3 class="section-title">Work Experience</h3>
+                    
+                    <div class="experience-item">
+                        <div class="company-logo">
+                            <img src="./inel.png" alt="TechCorp Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>TC</span>';">
+                        </div>
+                        <div class="item-content">
+                            <div class="item-header">
+                                <div>
+                                    <div class="company">INEL Elettronica S.r.l.</div>
+                                    <div class="job-title">Embedded Software Engineer (Full-time)</div>
+                                </div>
+                                <div class="date">October 2024 - Present</div>
+                            </div>
+                            <div class="description">
+                                  <ul>
+                                    <li>Software Design and Development, Particular focus on the medical sector, Ensuring robust and scalable solutions.</li>
+                                    <li>Industrial automation and robotics, particularly within medical technology using ARM stm32 programming, cypress FM families, embedded linux, and HAL low level programming.</li>
+                                    <li>Involved with RTOS (real time operating systems) with communication protocols EtherCAT, CAN bus, and PLC programming.</li>
+                                    <li>In addition, customization Linuxcnc by creating custom drivers using C programming language.</li>
+                                    <li>Other communication protocols which we use: Ethernet, UART, SPI, I2C.</li>
+                                    <li>Control and program servo motors and servo drives.</li>
+                                    <li>Git, Gitlab.</li>
+                                    <li>Software test and debugging. Adding new features to the current programs.</li>
+                                    <li>Hardware test and debugging using oscilloscope, and multimeter.</li>
+                                </ul>
+                            </div>
+                             <div class="skills-desc">
+                                    Skills: Embedded Devices · ARM Architecture · Real-Time Operating Systems (RTOS) · Embedded Linux · 
+                                    C++ · C (Programming Language) · EtherCAT · CAN bus · Modbus · Universal Asynchronous 
+                                    Receiver/Transmitter (UART) · I2C · Serial Peripheral Interface (SPI) · Programmable Logic Controller (PLC) · HAL ·
+                                    Servo Drives · Servo Control · Firmware · Oscilloscope · Multimeter · Microcontrollers · Microprocessors · VS Code · 
+                                    IAR Embedded Workbench · STM32Cube
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                          <div class="company-logo">
+                            <img src="./netcom.jpg" alt="TechCorp Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>TC</span>';">
+                        </div>
+                        <div class="item-header">
+                            <div>
+                                <div class="company">NetCom Group S.p.A.</div>
+                                <div class="job-title">Software Engineer (Full-time)</div> 
+                            </div>
+                            <div class="date">February 2023 - September 2024</div>
+                        </div>
+                        <div class="description">
+                            <ul>
+                            <li>In Collaboration with Stellantis as an external consultant, for Autonomous Driving Project</li>
+                            <li>Modeling the vehicle in Matlab, Simulink, and Stateflow with a Model Based Design approach</li>
+                            <li>C++ for Software in the Loop (SIL) Tests, using the ROS (Robot Operating Systems)</li>
+                            <li>Agile methodology with team collaboration</li>
+                            <li>Systems Engineering and Requirement Analysis following V-Cycle development methodology and ISO 26262 functional safety standard</li>
+                            <li>Linux system administration and Docker containerization for development and testing environments</li>
+                            <li>Different tools such as git, github, bazel, codebeamer, confluence, and Docker.</li>
+                            </ul>
+                        </div>
+                            <div class="skills-desc">
+                                Skills: Linux · Matlab · Simulink · Stateflow · C++ · C (Programming Language) · Object Oriented Programming · Docker · 
+                                ROS (robot operating system) · ISO26262 · V-Cycle · bazel · CAN bus · VS Code · Scrum · Agile · Team Collaboration ·
+                                Requirement Analysis · SIL (software in the loop) · Embedded Coder · Test · Debug           
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                         <div class="company-logo">
+                            <img src="./electrolux.png" alt="TechCorp Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>TC</span>';">
+                        </div>
+                        <div class="item-header">
+                            <div>
+                                <div class="company">Electrolux</div>
+                                <div class="job-title">Machine Learning Engineer (Internship)</div>
+                            </div>
+                            <div class="date">May 2022 - January 2023</div>
+                        </div>
+                        <div class="description">
+                            <ul>
+                            <li>Working as a Machine Learning Engineer for Precise Control in collaboration with Model Based Design team</li>
+                            <li>Using Machine Learning for accurate Time Series Prediction for Real Time Operating System (RTOS)</li>
+                            <li>Using Matlab Simulink to test MIL (Model-in-the-Loop), SIL (Software-in-the-Loop), PIL (Processor-in-the-Loop), and HIL (Hardware-in-the-Loop)</li>
+                            <li>C/C++ for embedded AI development with ARM and Arduino AI development MCU</li>
+                            <li>Conducted research and wrote final thesis documenting Machine Learning methodologies and implementation results</li>
+                            </ul>
+                        </div>
+                        <div class="skills-desc">
+                                Skills: Windows · Matlab · Simulink · Stateflow · Python · C++ · C (Programming Language) · Object Oriented Programming · 
+                                SIL (software in the loop) · PIL (Processor-in-the-Loop) · HIL (Hardware-in-the-Loop) · Embedded Coder · 
+                                Real Time Operating System (RTOS) · embedded AI development · ARM · Arduino · Research and Documentation· Team Collaboration ·          
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="section">
+                    <h3 class="section-title">Education</h3>
+                    
+                    <div class="education-item">
+                        <div class="education-logo">
+                            <img src="./padova.png" alt="TechCorp Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>TC</span>';">
+                        </div>
+                        <div class="item-header">
+                            <div>
+                                <div class="institution">Università degli Studi di Padova</div>
+                                <div class="degree">Master's degree Control Systms Engineering </div>
+                            </div>
+                            <div class="date">2020 - 2023</div>
+                        </div>
+                        <div class="description">
+                            <a href="https://thesis.unipd.it/handle/20.500.12608/43167" target="_blank">
+                                Final Thesis: "Improvement of time-series forecasting algorithms in low-power embedded systems by efficient online/incremental learning"</a><br>
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                         <div class="education-logo">
+                            <img src="./ferdowsi.png" alt="TechCorp Logo" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>TC</span>';">
+                        </div>
+                        <div class="item-header">
+                            <div>
+                                <div class="institution">Ferdowsi University of Mashhad</div>
+                                <div class="degree">Bachelor of Electrical Engineering</div>
+                            </div>
+                            <div class="date">2010 - 2015</div>
+                        </div>
+                        <div class="description">
+                            Final Thesis: "Applying MPC (model predictive controller) for traffic control using MBD"
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="section">
+                    <h3 class="section-title">Certifications</h3>
+                    <div class="description">
+                    • <a href="https://www.udemy.com/certificate/UC-0d747a8d-3c1f-4f75-96ee-de2fa1e8df4d/" target="_blank">Model Based Development -MBD- For Automotive using Simulink</a><br>
+                    • <a href="https://matlabacademy.mathworks.com/progress/share/certificate.html?id=b2859316-01b6-47df-aef8-6b01c03e05e3&" target="_blank">MATLAB Fundamentals</a><br>
+                    • <a href="https://matlabacademy.mathworks.com/progress/share/certificate.html?id=860b48e7-75b2-448e-b61c-31cf040eb201&" target="_blank">Stateflow Onramp</a><br>
+                    • <a href="https://www.udemy.com/certificate/UC-df5b7ef9-24ed-4923-93ea-c1be9ff96629/" target="_blank">ISO 26262 Crash Course: Functional Safety Mastery</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <script>
+        function selectSource(source) {
+            // Automatically send data to Formspree
+            fetch('https://formspree.io/f/mblyodaw', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    source: source,
+                    timestamp: new Date().toLocaleString(),
+                    page: window.location.href
+                })
+            }).catch(error => console.log('Error:', error));
+            
+            closeModal();
+            showThankYou(source);
+        }
+
+                function skipModal() {
+                    localStorage.setItem('cvSource', 'skipped');
+                    localStorage.setItem('cvSourceDate', new Date().toISOString());
+                    closeModal();
+                }
+
+                function closeModal() {
+                    const modal = document.getElementById('sourceModal');
+                    modal.classList.add('hidden');
+                    
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 300);
+                }
+
+                function showThankYou(source) {
+                    const thankYou = document.getElementById('thankYou');
+                    thankYou.classList.add('show');
+                    
+                    setTimeout(() => {
+                        thankYou.classList.remove('show');
+                    }, 3000);
+                }
+                function downloadPDF() {
+                    // Hide the download button and modal before generating PDF
+                    const downloadBtn = document.querySelector('.download-btn');
+                    const modal = document.getElementById('sourceModal');
+                    
+                    downloadBtn.style.display = 'none';
+                    modal.style.display = 'none';
+                    
+                    // Configure PDF options
+                    const element = document.querySelector('.cv-container');
+                    const opt = {
+                        margin: 0.5,
+                        filename: 'Emad_Shamsaki_CV.pdf',
+                        image: { type: 'jpeg', quality: 0.98 },
+                        html2canvas: { 
+                            scale: 2,
+                            useCORS: true,
+                            letterRendering: true
+                        },
+                        jsPDF: { 
+                            unit: 'in', 
+                            format: 'a4', 
+                            orientation: 'portrait' 
+                        }
+                    };
+
+                    // Generate and download PDF
+                    html2pdf().set(opt).from(element).save().then(() => {
+                        // Show the button again after PDF generation
+                        downloadBtn.style.display = 'flex';
+                        if (!modal.classList.contains('hidden')) {
+                            modal.style.display = 'flex';
+                        }
+                    });
+                }
+            </script>
+</body>    
+
+</html>
