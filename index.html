@@ -281,51 +281,41 @@
 
         @media print {
             body {
-                background: white;
-                padding: 0;
+                background: white !important;
+                padding: 0 !important;
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
             }
             
             .cv-container {
-                box-shadow: none;
-                border-radius: 0;
-            }
-            
-            .download-btn {
-            display: none !important;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                max-width: none !important;
             }
             
             .header {
-                padding: 30px 20px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
             }
             
-            .name {
-                font-size: 2em;
-            }
-            
-            .contact-info {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .item-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 5px;
-            }
-
             .download-btn {
-                top: 10px;
-                right: 10px;
-                padding: 10px 16px;
-                font-size: 12px;
+                display: none !important;
             }
-
+            
+            .modal-overlay {
+                display: none !important;
+            }
+            
+            /* Ensure links are visible in PDF */
+            a {
+                color: #667eea !important;
+                text-decoration: underline !important;
+            }
+            
+            .header a {
+                color: white !important;
+            }
         }
 
         /* pop up */
@@ -814,41 +804,60 @@
                         thankYou.classList.remove('show');
                     }, 3000);
                 }
-                function downloadPDF() {
-                    // Hide the download button and modal before generating PDF
-                    const downloadBtn = document.querySelector('.download-btn');
-                    const modal = document.getElementById('sourceModal');
-                    
-                    downloadBtn.style.display = 'none';
-                    modal.style.display = 'none';
-                    
-                    // Configure PDF options
-                    const element = document.querySelector('.cv-container');
-                    const opt = {
-                        margin: 0.5,
-                        filename: 'Emad_Shamsaki_CV.pdf',
-                        image: { type: 'jpeg', quality: 0.98 },
-                        html2canvas: { 
-                            scale: 2,
-                            useCORS: true,
-                            letterRendering: true
-                        },
-                        jsPDF: { 
-                            unit: 'in', 
-                            format: 'a4', 
-                            orientation: 'portrait' 
-                        }
-                    };
-
-                    // Generate and download PDF
-                    html2pdf().set(opt).from(element).save().then(() => {
-                        // Show the button again after PDF generation
-                        downloadBtn.style.display = 'flex';
-                        if (!modal.classList.contains('hidden')) {
-                            modal.style.display = 'flex';
-                        }
-                    });
+        function downloadPDF() {
+            // Hide interactive elements
+            const downloadBtn = document.querySelector('.download-btn');
+            const modal = document.getElementById('sourceModal');
+            const thankYou = document.getElementById('thankYou');
+            
+            downloadBtn.style.display = 'none';
+            modal.style.display = 'none';
+            thankYou.style.display = 'none';
+            
+            // Configure PDF options with better settings
+            const element = document.querySelector('.cv-container');
+            const opt = {
+                margin: [0.5, 0.5, 0.5, 0.5],
+                filename: 'Emad_Shamsaki_CV.pdf',
+                image: { 
+                    type: 'jpeg', 
+                    quality: 1.0 
+                },
+                html2canvas: { 
+                    scale: 3,
+                    useCORS: true,
+                    allowTaint: true,
+                    letterRendering: true,
+                    logging: false,
+                    imageTimeout: 15000,
+                    removeContainer: true,
+                    backgroundColor: '#ffffff'
+                },
+                jsPDF: { 
+                    unit: 'in', 
+                    format: 'a4', 
+                    orientation: 'portrait',
+                    compress: true
+                },
+                pagebreak: { 
+                    mode: ['avoid-all', 'css', 'legacy'] 
                 }
+            };
+
+            // Generate PDF
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restore hidden elements
+                downloadBtn.style.display = 'flex';
+                modal.style.display = 'flex';
+                thankYou.style.display = 'block';
+            }).catch(error => {
+                console.error('PDF generation failed:', error);
+                // Restore elements even if PDF fails
+                downloadBtn.style.display = 'flex';
+                modal.style.display = 'flex';
+                thankYou.style.display = 'block';
+            });
+        }
             </script>
 </body>    
 
