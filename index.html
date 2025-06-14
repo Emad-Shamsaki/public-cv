@@ -181,7 +181,7 @@
             color: #555;
             line-height: 1.75;
             text-align: justify;
-            hyphens: none ;
+            hyphens: auto;
             font-size: 0.85em;
             font-family: "Times New Roman";
             font-weight: 600;
@@ -202,7 +202,7 @@
             color: #555;
             line-height: 1.5;
             text-align: justify;
-            hyphens: nose;
+            hyphens: auto;
             font-size: 0.75em;
             font-family: "Times New Roman";
             font-weight: 400;
@@ -281,40 +281,38 @@
 
         @media print {
             body {
-                background: white !important;
-                padding: 0 !important;
-                -webkit-print-color-adjust: exact !important;
-                color-adjust: exact !important;
+                background: white;
+                padding: 0;
             }
             
             .cv-container {
-                box-shadow: none !important;
-                border-radius: 0 !important;
-                max-width: none !important;
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
             }
             
             .header {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
-                -webkit-print-color-adjust: exact !important;
-                color-adjust: exact !important;
+                padding: 30px 20px;
             }
             
-            .download-btn {
-                display: none !important;
+            .name {
+                font-size: 2em;
             }
             
-            .modal-overlay {
-                display: none !important;
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
             }
             
-            /* Ensure links are visible in PDF */
-            a {
-                color: #667eea !important;
-                text-decoration: underline !important;
-            }
-            
-            .header a {
-                color: white !important;
+            .item-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
             }
         }
 
@@ -418,7 +416,7 @@
         .thank-you {
             position: fixed;
             top: 20px;
-            left: 20px;
+            right: 20px;
             background: #28a745;
             color: white;
             padding: 15px 20px;
@@ -433,45 +431,10 @@
             opacity: 1;
             visibility: visible;
         }
-
-        /* PDF Download Button */
-        .download-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-        }
-
-        .download-btn:active {
-            transform: translateY(0);
-        }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
     <body>
-    <!-- PDF Download Button -->
-    <button class="download-btn" onclick="downloadPDF()">
-        📄 Download PDF
-    </button>
     <!-- Modal pop up -->
     <div class="modal-overlay" id="sourceModal">
         <div class="modal">
@@ -518,7 +481,7 @@
                     <span>📍</span>
                     <span>Padova, Italy</span>
                 </div>
-                <div class="contact-item">
+                 <div class="contact-item">
                     <span>💼</span>
                     <a href="https://www.linkedin.com/in/emad-shamsaki/" target="_blank" style="color: white; text-decoration: none;">LinkedIn</a>
                 </div>
@@ -804,60 +767,6 @@
                         thankYou.classList.remove('show');
                     }, 3000);
                 }
-        function downloadPDF() {
-            // Hide interactive elements
-            const downloadBtn = document.querySelector('.download-btn');
-            const modal = document.getElementById('sourceModal');
-            const thankYou = document.getElementById('thankYou');
-            
-            downloadBtn.style.display = 'none';
-            modal.style.display = 'none';
-            thankYou.style.display = 'none';
-            
-            // Configure PDF options with better settings
-            const element = document.querySelector('.cv-container');
-            const opt = {
-                margin: [0.5, 0.5, 0.5, 0.5],
-                filename: 'Emad_Shamsaki_CV.pdf',
-                image: { 
-                    type: 'jpeg', 
-                    quality: 1.0 
-                },
-                html2canvas: { 
-                    scale: 3,
-                    useCORS: true,
-                    allowTaint: true,
-                    letterRendering: true,
-                    logging: false,
-                    imageTimeout: 15000,
-                    removeContainer: true,
-                    backgroundColor: '#ffffff'
-                },
-                jsPDF: { 
-                    unit: 'in', 
-                    format: 'a4', 
-                    orientation: 'portrait',
-                    compress: true
-                },
-                pagebreak: { 
-                    mode: ['avoid-all', 'css', 'legacy'] 
-                }
-            };
-
-            // Generate PDF
-            html2pdf().set(opt).from(element).save().then(() => {
-                // Restore hidden elements
-                downloadBtn.style.display = 'flex';
-                modal.style.display = 'flex';
-                thankYou.style.display = 'block';
-            }).catch(error => {
-                console.error('PDF generation failed:', error);
-                // Restore elements even if PDF fails
-                downloadBtn.style.display = 'flex';
-                modal.style.display = 'flex';
-                thankYou.style.display = 'block';
-            });
-        }
             </script>
 </body>    
 
